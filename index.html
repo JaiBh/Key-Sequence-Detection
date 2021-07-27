@@ -5,8 +5,23 @@
   <title>Key Detection</title>
   <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
 </head>
+<h2>Type the secret code (unicorn), press esc to reset if you messed up!</h2>
 <body>
 <script>
+const secretCode = "unicorn"
+let pressed = [];
+
+window.addEventListener("keyup", (e) => {
+	pressed.push(e.key)
+	pressed.splice(secretCode.length - 1, pressed.length - secretCode.length)
+	if (e.keyCode === 27) {
+		pressed = [];
+	}
+	if (pressed.join("").includes(secretCode)) {
+		cornify_add()
+	}
+})
+
 </script>
 </body>
 </html>
